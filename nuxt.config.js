@@ -1,6 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 import { zhHans, en } from 'vuetify/src/locale'
 import { localZhHans, localEn } from './locales'
+import serverConfig from './config/server.config'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -8,7 +9,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - west-coast',
+    titleTemplate: '%s',
     title: 'west-coast',
     htmlAttrs: {
       lang: 'en'
@@ -33,7 +34,7 @@ export default {
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: '/favicon.ico'
+        href: '/favicon.png'
       }
     ]
   },
@@ -44,7 +45,9 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    './plugins/axios-interceptors.ts'
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -60,18 +63,22 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/toast',
+    'cookie-universal-nuxt'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: `${serverConfig.SERVER}/api`,
+    timeout: 5000
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
     theme: {
       dark: false,
       themes: {
@@ -127,7 +134,15 @@ export default {
       current: 'en'
     }
   },
+  toast: {
+    position: 'top-center',
+    duration: 2000,
+    className: 'toast'
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+  router: {
+    middleware: 'router'
+  }
 }
