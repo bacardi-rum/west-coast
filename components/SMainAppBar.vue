@@ -12,7 +12,6 @@
     <s-login-full-dialog
       v-if="!$vuetify.breakpoint.smAndDown && !$store.state.login"
       :key="$vuetify.lang.t('$vuetify.sign.in')"
-      :user-info="$store.state.user"
     />
     <v-spacer />
     <!--      搜索框-->

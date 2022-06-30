@@ -1,6 +1,6 @@
 <template>
   <v-lazy>
-    <v-card :loading="loading" v-bind="$attrs">
+    <v-card :loading="loading" elevation="2" v-bind="$attrs">
       <v-img :alt="model.title" :src="model.cover" @load="loading = false" />
       <v-divider />
       <v-card-title class="text-h5 text-break font-weight-bold">

@@ -5,7 +5,7 @@
     <!--    左侧导航栏-->
     <v-navigation-drawer v-model="drawer" app>
       <!--      用户信息摘要-->
-      <s-user-info-card :user-info="userInfo" @logout="drawer = false" />
+      <s-user-info-card @logout="drawer = false" />
       <v-divider />
       <v-list nav>
         <!--        导航项-->
@@ -91,15 +91,6 @@ export default Vue.extend({
           to: '/about'
         }
       ]
-    }
-  },
-  computed: {
-    userInfo () { return this.$store.state.user }
-  },
-  methods: {
-    translate () {
-      this.$vuetify.lang.current = this.currentLocale === 'zhHans' ? 'en' : 'zhHans'
-      this.currentLocale = this.$vuetify.lang.current
     }
   }
 })

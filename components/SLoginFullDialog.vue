@@ -97,32 +97,30 @@
               <v-subheader v-if="isLogin" class="text-center">
                 <v-btn
                   :loading="signInLoading"
-                  class="font-weight-bold text-h5"
+                  class="font-weight-bold text-h6"
                   color="primary"
-                  large
                   text
                   @click="login"
                 >
                   {{ $vuetify.lang.t('$vuetify.sign.in') }}
                 </v-btn>
-                <v-divider vertical />
-                <v-btn class="font-weight-bold text-h5" large text @click="isLogin = false">
+                <!--                <v-divider vertical />-->
+                <v-btn class="font-weight-bold text-h6" text @click="isLogin = false">
                   {{ $vuetify.lang.t('$vuetify.app.to') }}&nbsp;{{ $vuetify.lang.t('$vuetify.sign.up') }}
                 </v-btn>
               </v-subheader>
               <v-subheader v-else :class="isLogin ? '' : 'mt-6'" class="text-center">
                 <v-btn
                   :loading="signUpLoading"
-                  class="font-weight-bold text-h5"
+                  class="font-weight-bold text-h6"
                   color="primary"
-                  large
                   text
                   @click="register"
                 >
                   {{ $vuetify.lang.t('$vuetify.sign.up') }}
                 </v-btn>
-                <v-divider vertical />
-                <v-btn class="font-weight-bold text-h5" large text @click="isLogin = true">
+                <!--                <v-divider vertical />-->
+                <v-btn class="font-weight-bold text-h6" text @click="isLogin = true">
                   {{ $vuetify.lang.t('$vuetify.app.to') }}&nbsp;{{ $vuetify.lang.t('$vuetify.sign.in') }}
                 </v-btn>
               </v-subheader>
@@ -143,10 +141,6 @@ import * as payloadTypes from '~/store/.payload-types'
 export default Vue.extend({
   name: 'SLoginFullDialog',
   props: {
-    userInfo: {
-      type: Object,
-      required: true
-    },
     icon: {
       type: Boolean,
       default () { return true }

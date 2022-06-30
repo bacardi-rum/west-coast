@@ -6,7 +6,7 @@
 import { Article, User } from '~/models'
 
 export type State = {
-  user: User | {},
+  user: Partial<User>,
   login: boolean,
   existed: boolean,
   technology: Article[],

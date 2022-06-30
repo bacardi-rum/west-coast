@@ -24,5 +24,11 @@ export default {
     state.login = false
     const $cookies = this.$cookies as any
     $cookies.remove('westcoast-token')
+  },
+  [types.SIGNATURE] (state: State, signature: string) {
+    state.user = {
+      ...state.user,
+      signature
+    }
   }
 }

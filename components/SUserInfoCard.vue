@@ -9,7 +9,6 @@
         v-if="$vuetify.breakpoint.smAndDown && !$store.state.login"
         :key="$vuetify.lang.t('$vuetify.sign.in')"
         :icon="false"
-        :user-info="$store.state.user"
       />
       <!--          登出按钮-->
       <v-btn v-if="$store.state.login" class="font-weight-bold" color="primary" text @click="logout">
@@ -23,7 +22,7 @@
     <!--        邮箱-->
     <v-card-subtitle>{{ userInfo.email || $vuetify.lang.t('$vuetify.sign.email') }}</v-card-subtitle>
     <!--        个性签名-->
-    <v-card-text>
+    <v-card-text class="pb-0">
       {{ userInfo.signature || $vuetify.lang.t('$vuetify.sign.signature') }}
     </v-card-text>
     <v-card-actions v-if="$store.state.login">
@@ -39,17 +38,16 @@ import mutationTypes from '~/store/.mutation-types'
 
 export default Vue.extend({
   name: 'SUserInfoCard',
-  props: {
-    userInfo: {
-      type: Object,
-      required: true
-    }
+  computed: {
+    userInfo () { return this.$store.state.user }
   },
   methods: {
     logout () {
       this.$store.commit(mutationTypes.LOG_OUT)
       this.$vuetify.breakpoint.smAndDown && this.$emit('logout')
-      this.$toast.info(`${this.$vuetify.lang.t('$vuetify.sign.bye')}~`)
+      this.$toast.show(`${this.$vuetify.lang.t('$vuetify.sign.bye')}~`, {
+        className: 'toast'
+      })
     }
   }
 })

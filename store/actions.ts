@@ -45,5 +45,23 @@ export default {
     const { username } = payload
     const existed = await $axios.post('/user/existed', { username }).then(({ data }: AxiosResponse) => data.status)
     commit(mutationTypes.EXISTED, existed)
+  },
+  async [actionTypes.SIGNATURE] ({ commit }: ActionContext<State, State>, payload: payloadTypes.Signature) {
+    const {
+      _id,
+      signature,
+      callback
+    } = payload
+    const $axios = this.$axios as any
+    await $axios.post('/user/signature', {
+      _id,
+      signature
+    })
+      .then(({ data }: AxiosResponse) => {
+        callback(data.status, data.msg)
+        if (data.status) {
+          commit(mutationTypes.SIGNATURE, signature)
+        }
+      })
   }
 } as ActionTree<State, State>
