@@ -22,7 +22,7 @@
     <!--        邮箱-->
     <v-card-subtitle>{{ userInfo.email || $vuetify.lang.t('$vuetify.sign.email') }}</v-card-subtitle>
     <!--        个性签名-->
-    <v-card-text class="pb-0">
+    <v-card-text>
       {{ userInfo.signature || $vuetify.lang.t('$vuetify.sign.signature') }}
     </v-card-text>
     <v-card-actions v-if="$store.state.login">

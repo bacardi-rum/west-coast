@@ -7,14 +7,13 @@ import serverConfig from './config/server.config'
 
 export default {
   server: {
-    port: 443,
     https: {
       key: fs.readFileSync(path.resolve(__dirname, './https/westcoast.blue.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, './https/westcoast.blue.crt'))
+      cert: fs.readFileSync(path.resolve(__dirname, './https/westcoast.blue.pem'))
     }
   },
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  // target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
