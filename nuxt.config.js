@@ -1,9 +1,18 @@
+import path from 'path'
+import fs from 'fs'
 import colors from 'vuetify/es5/util/colors'
 import { zhHans, en } from 'vuetify/src/locale'
 import { localZhHans, localEn } from './locales'
 import serverConfig from './config/server.config'
 
 export default {
+  server: {
+    port: 443,
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, './https/westcoast.blue.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, './https/westcoast.blue.crt'))
+    }
+  },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
