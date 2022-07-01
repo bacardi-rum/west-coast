@@ -10,3 +10,7 @@
 .v-text-field__slot > textarea {
   //margin-bottom: 10px !important;
 }
+
+.v-btn:not(.v-btn--round).v-size--default {
+  padding: 0 8px !important;
+}
