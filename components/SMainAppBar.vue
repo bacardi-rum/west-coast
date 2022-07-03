@@ -16,6 +16,7 @@
     <v-spacer />
     <!--      搜索框-->
     <v-text-field
+      v-model="searchKey"
       :placeholder="$vuetify.lang.t(placeholder)"
       clearable
       dense
@@ -23,6 +24,7 @@
       prepend-inner-icon="mdi-magnify"
       rounded
       solo
+      @keyup.enter="search"
     />
     <!--      切换主题按钮-->
     <v-btn icon @click="$vuetify.theme.dark = !$vuetify.theme.dark">
@@ -54,14 +56,16 @@ export default Vue.extend({
   data () {
     return {
       currentLocale: this.$vuetify.lang.current,
-      placeholder: '$vuetify.app.placeholder'
+      placeholder: '$vuetify.app.placeholder',
+      searchKey: ''
     }
   },
   methods: {
     translate () {
       this.$vuetify.lang.current = this.currentLocale === 'zhHans' ? 'en' : 'zhHans'
       this.currentLocale = this.$vuetify.lang.current
-    }
+    },
+    search () { this.$router.push(`/search/${this.searchKey}`) }
   }
 })
 </script>

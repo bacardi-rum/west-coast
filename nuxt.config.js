@@ -6,12 +6,14 @@ import { localZhHans, localEn } from './locales'
 import serverConfig from './config/server.config'
 
 export default {
-  server: {
-    https: {
-      key: fs.readFileSync(path.resolve(__dirname, './https/westcoast.blue.key')),
-      cert: fs.readFileSync(path.resolve(__dirname, './https/westcoast.blue.pem'))
-    }
-  },
+  server: process.env.NODE_ENV === 'development'
+    ? {}
+    : {
+        https: {
+          key: fs.readFileSync(path.resolve(__dirname, './https/westcoast.blue.key')),
+          cert: fs.readFileSync(path.resolve(__dirname, './https/westcoast.blue.pem'))
+        }
+      },
   // Target: https://go.nuxtjs.dev/config-target
   // target: 'static',
 

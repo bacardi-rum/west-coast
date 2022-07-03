@@ -1,8 +1,12 @@
 import types from '~/store/.mutation-types'
 import { State } from '~/store/state'
-import { User } from '~/models'
+import { Article, User } from '~/models'
+import serverConfig from '~/config/server.config'
 
 export default {
+  [types.GET_ALL_ARTICLES] (state: State, articles: Article[]) {
+    state.articles = articles
+  },
   [types.SIGNED_IN] (state: State, userInfo: User) {
     // console.log(state, userInfo)
     state.user = userInfo
@@ -29,6 +33,12 @@ export default {
     state.user = {
       ...state.user,
       signature
+    }
+  },
+  [types.UPLOAD_AVATAR] (state: State, avatarUrl: string) {
+    state.user = {
+      ...state.user,
+      avatar: `${serverConfig.SERVER}${avatarUrl}`
     }
   }
 }

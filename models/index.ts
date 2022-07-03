@@ -17,5 +17,6 @@ export type User = {
   username: string,
   avatar: string,
   email: string,
-  signature: string
+  signature: string,
+  root: boolean
 }

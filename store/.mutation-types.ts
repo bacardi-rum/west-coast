@@ -5,4 +5,6 @@ export default {
   TOKEN_EXPIRED: 'tokenExpired',
   LOG_OUT: 'logout',
   SIGNATURE: 'signature',
+  UPLOAD_AVATAR: 'uploadAvatar',
+  GET_ALL_ARTICLES: 'getAllArticles',
 }

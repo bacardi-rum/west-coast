@@ -9,20 +9,14 @@ export type State = {
   user: Partial<User>,
   login: boolean,
   existed: boolean,
-  technology: Article[],
-  life: Article[],
-  travel: Article[],
-  work: Article[]
+  articles: Article[]
 }
 
 const state: () => State = () => ({
   user: {},
   login: false,
   existed: false,
-  technology: [],
-  life: [],
-  travel: [],
-  work: []
+  articles: []
 })
 
 export default state

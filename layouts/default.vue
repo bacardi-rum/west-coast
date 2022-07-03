@@ -26,16 +26,20 @@
       <v-divider class="mt-10" />
       <!--      页脚-->
       <v-footer padless>
-        <v-card class="pa-5" flat tile>
+        <v-card class="pa-5 flex-grow-1" flat tile>
           <v-card-title>
             west-coast
           </v-card-title>
+          <v-card-subtitle>
+            你可以从这个博客获取一些有用的，没用的，或者不管什么东西。希望能够帮到你。你也可以向我的邮箱留言，可以提建议或者寻求帮助。<br>
+            邮箱：<a href="mailto:shencong2001@live.cn">shencong2001@live.cn</a><br>
+            项目地址：
+            <a href="https://github.com/Cinnamon-code/west-coast" target="_blank">
+              github.com/Cinnamon-code/west-coast
+            </a>
+          </v-card-subtitle>
           <v-card-text>
-            Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent
-            ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet
-            dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum
-            ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci
-            varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            鲁ICP备2022019200号
           </v-card-text>
         </v-card>
       </v-footer>

@@ -1,9 +1,12 @@
 <template>
   <v-card flat tile>
     <v-card-title class="pb-2">
-      <v-icon large>
-        mdi-account
-      </v-icon>
+      <v-avatar>
+        <v-img v-if="userInfo.avatar" :src="userInfo.avatar" />
+        <v-icon v-else x-large>
+          mdi-account
+        </v-icon>
+      </v-avatar>
       <!--          登陆界面-->
       <s-login-full-dialog
         v-if="$vuetify.breakpoint.smAndDown && !$store.state.login"

@@ -14,3 +14,8 @@
 .v-btn:not(.v-btn--round).v-size--default {
   padding: 0 8px !important;
 }
+
+.avatar:hover {
+  cursor: pointer;
+  border: 1px #1976d2 dashed;
+}

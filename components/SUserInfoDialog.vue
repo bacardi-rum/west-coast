@@ -26,9 +26,20 @@
       </v-app-bar>
       <!--              头像-->
       <v-card-title class="justify-center">
-        <v-avatar class="mt-5" size="80">
-          <v-img :src="userInfo.avatar || '/vue_ts.webp'" />
+        <v-avatar class="mt-5 avatar" size="80" @click="selectFile">
+          <v-img v-if="userInfo.avatar" :src="userInfo.avatar" />
+          <v-icon v-else x-large>
+            mdi-account
+          </v-icon>
         </v-avatar>
+        <input
+          ref="avatarUploader"
+          accept="image/png,image/jpeg"
+          hidden
+          name="avatar"
+          type="file"
+          @change="upload"
+        >
       </v-card-title>
       <!--              信息-->
       <v-card-title class="justify-center pt-0">
@@ -104,11 +115,24 @@ export default Vue.extend({
     onClose () {
       this.details = false
       this.save()
+    },
+    selectFile () { (this.$refs.avatarUploader as HTMLInputElement).click() },
+    upload (e: Event) {
+      const files = (e.target as HTMLInputElement).files
+      if (files && files.length > 0) {
+        const formData = new FormData()
+        formData.set('avatar', files[0])
+        formData.set('_id', this.userInfo._id)
+        this.$store.dispatch(actionTypes.UPLOAD_AVATAR, {
+          avatar: formData,
+          callback: (status: boolean, msg: string) => status ? this.$toast.success(msg) : this.$toast.error(msg)
+        } as payloadTypes.UploadAvatar)
+      }
     }
   }
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>
