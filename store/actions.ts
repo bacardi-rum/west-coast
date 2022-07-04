@@ -15,10 +15,12 @@ export default {
     const userInfo = await $axios.get('/user/info')
       .then(({ data }) => data.userInfo)
       .catch(() => ({}))
-    commit(mutationTypes.GET_USER_INFO, {
-      ...userInfo,
-      avatar: `${serverConfig.SERVER}${userInfo.avatarUrl}`
-    })
+    if (Object.keys(userInfo).length !== 0) {
+      commit(mutationTypes.GET_USER_INFO, {
+        ...userInfo,
+        avatar: `${serverConfig.SERVER}${userInfo.avatarUrl}`
+      })
+    }
 
     const articles = await $axios.get('/article/all')
       .then(({ data }) => data.articles.sort((a: Article, b: Article) => +new Date(b.updated) - +new Date(a.updated)))
