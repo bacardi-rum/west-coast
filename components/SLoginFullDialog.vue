@@ -94,7 +94,7 @@
                   validate-on-blur
                 />
               </v-slide-x-transition>
-              <v-subheader v-if="isLogin" class="text-center">
+              <v-subheader v-if="isLogin" class="text-center d-flex justify-space-around">
                 <v-btn
                   :loading="signInLoading"
                   class="font-weight-bold text-h6"
@@ -109,7 +109,7 @@
                   {{ $vuetify.lang.t('$vuetify.app.to') }}&nbsp;{{ $vuetify.lang.t('$vuetify.sign.up') }}
                 </v-btn>
               </v-subheader>
-              <v-subheader v-else :class="isLogin ? '' : 'mt-6'" class="text-center">
+              <v-subheader v-else :class="isLogin ? '' : 'mt-6'" class="text-center d-flex justify-space-around">
                 <v-btn
                   :loading="signUpLoading"
                   class="font-weight-bold text-h6"
@@ -224,5 +224,9 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .v-text-field {
   width: 90%;
+}
+
+.v-subheader {
+  width: 100%;
 }
 </style>

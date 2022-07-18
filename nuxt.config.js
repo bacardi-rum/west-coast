@@ -38,6 +38,9 @@ export default {
       {
         name: 'format-detection',
         content: 'telephone=no'
+      },
+      {
+        'page-enter': 'reveal(Trans(duration=2,transition=23))'
       }
     ],
     link: [
@@ -56,7 +59,11 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    './plugins/axios-interceptors.ts'
+    './plugins/axios-interceptors.ts',
+    {
+      src: '@/plugins/vue-mavon-editor',
+      ssr: false
+    }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

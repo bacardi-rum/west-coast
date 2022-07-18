@@ -40,5 +40,11 @@ export default {
       ...state.user,
       avatar: `${serverConfig.SERVER}${avatarUrl}`
     }
+  },
+  [types.SAVED] (state: State, art: Article) {
+    state.articles.unshift(art)
+  },
+  [types.CREATED] (state: State, _id: string) {
+    state.tempId = _id
   }
 }

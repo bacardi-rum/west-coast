@@ -17,7 +17,7 @@
         sm="6"
         xl="3"
       >
-        <s-card :info="art" min-height="300" type="technology" />
+        <s-card :info="art" max-height="376" min-height="376" type="technology" />
       </v-col>
     </v-row>
     <!--    life-->
@@ -38,7 +38,7 @@
         lg="4"
         sm="6"
       >
-        <s-card :info="art" min-height="300" type="life" />
+        <s-card :info="art" max-height="376" min-height="376" type="life" />
       </v-col>
     </v-row>
     <!--    travel-->
@@ -59,7 +59,7 @@
         sm="6"
         xl="3"
       >
-        <s-card :info="art" min-height="300" type="life" />
+        <s-card :info="art" max-height="376" min-height="376" type="life" />
       </v-col>
     </v-row>
     <!--    work-->
@@ -80,7 +80,7 @@
         lg="4"
         sm="6"
       >
-        <s-card :info="art" min-height="300" type="life" />
+        <s-card :info="art" max-height="376" min-height="376" type="life" />
       </v-col>
     </v-row>
   </v-container>

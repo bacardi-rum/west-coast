@@ -26,13 +26,13 @@ export default {
       .then(({ data }) => data.articles.sort((a: Article, b: Article) => +new Date(b.updated) - +new Date(a.updated)))
     commit(mutationTypes.GET_ALL_ARTICLES, articles)
   },
-  [actionTypes.REGISTER] (_context: ActionContext<State, State>, payload: payloadTypes.Register) {
+  async [actionTypes.REGISTER] (_context: ActionContext<State, State>, payload: payloadTypes.Register) {
     const $axios = this.$axios as any // NuxtAxiosInstance
     const {
       callback,
       ...userInfo
     } = payload
-    $axios.post('user/register', userInfo)
+    await $axios.post('user/register', userInfo)
       .then(({ data }: AxiosResponse) => callback(data.status, data.msg))
   },
   async [actionTypes.LOGIN] ({ commit }: ActionContext<State, State>, payload: payloadTypes.Login) {
@@ -78,18 +78,42 @@ export default {
         }
       })
   },
-  [actionTypes.UPLOAD_AVATAR] ({ commit }: ActionContext<State, State>, payload: payloadTypes.UploadAvatar) {
+  async [actionTypes.UPLOAD_AVATAR] ({ commit }: ActionContext<State, State>, payload: payloadTypes.UploadAvatar) {
     const {
       avatar,
       callback
     } = payload
     const $axios = this.$axios as any
-    $axios.post('/user/upload-avatar', avatar)
+    await $axios.post('/user/upload-avatar', avatar)
       .then(({ data }: AxiosResponse) => {
         callback(data.status, data.msg)
         if (data.status) {
           commit(mutationTypes.UPLOAD_AVATAR, data.avatar)
         }
       })
+  },
+  async [actionTypes.SAVE] ({ commit }: ActionContext<State, State>, payload: payloadTypes.Save) {
+    const {
+      value,
+      callback
+    } = payload
+    const $axios = this.$axios as any
+    await $axios.post('/article/save', value)
+      .then(({ data }: AxiosResponse) => {
+        callback(data.status, data.msg)
+        if (data.status) {
+          commit(mutationTypes.SAVED, data.art)
+        }
+      })
+  },
+  async [actionTypes.CREATE] ({ commit }: ActionContext<State, State>) {
+    const $axios = this.$axios as any
+    await $axios.get('/article/create')
+      .then(({ data }: AxiosResponse) => {
+        commit(mutationTypes.CREATED, data._id)
+      })
+  },
+  async [actionTypes.DELETE_TEMP_ID] (_ctx: ActionContext<State, State>, _id: string) {
+
   }
 } as ActionTree<State, State>
