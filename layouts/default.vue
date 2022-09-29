@@ -39,7 +39,7 @@
             </a>
           </v-card-subtitle>
           <v-card-text>
-            鲁ICP备2022019200号
+            <a href="https://beian.miit.gov.cn/">鲁ICP备2022019200号</a>
           </v-card-text>
         </v-card>
       </v-footer>

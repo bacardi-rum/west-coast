@@ -10,6 +10,7 @@ export type Article = {
   created: Date,
   updated: Date,
   deleted: boolean
+  temp?: boolean
 }
 
 export type User = {

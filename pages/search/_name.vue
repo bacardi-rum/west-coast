@@ -37,7 +37,7 @@ export default Vue.extend({
       const name = this.$route.params.name ?? ''
       const arts = [...this.$store.state.articles] as Article[]
       return arts
-        .filter(art => (this.cate === 'all' ? true : art.category === this.cate) && (art.title.includes(name) || art.digest.includes(name)))
+        .filter(art => (this.cate === 'all' ? true : art.category === this.cate) && !art.temp && (art.title.includes(name) || art.digest.includes(name)))
         .sort((a, b) => {
           switch (this.sort) {
             case 'td':

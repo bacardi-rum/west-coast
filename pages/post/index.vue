@@ -7,12 +7,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import editorConfig from '~/config/editor.config'
-import post from '~/mixins/post'
+import root from '~/mixins/root'
 import actionTypes from '~/store/.action-types'
 
 export default Vue.extend({
   name: 'Post',
-  mixins: [post],
+  mixins: [root],
   data () {
     return {
       input: '',

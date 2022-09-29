@@ -34,7 +34,7 @@
         </v-avatar>
         <input
           ref="avatarUploader"
-          accept="image/png,image/jpeg"
+          accept="image/jpeg"
           hidden
           name="avatar"
           type="file"
